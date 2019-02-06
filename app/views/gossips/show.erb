@@ -24,6 +24,8 @@
       	<p> <%= @gossip.user.first_name %> <%= @gossip.user.last_name %> </p> 
         <p> <%= link_to "Read more about the author", '/author/'+@gossip.user.id.to_s %> </p> 
         <p> <%= link_to "Edit the gossip", edit_gossip_path %> </p>
+        <p> <%= link_to "Destroy the gossip", gossip_path(@gossip), method: :delete, data: { confirm: 'Etes-vous sûr.e de vouloir supprimer le gossip ?' } %> </p>
+        <p> <%= link_to "Display author's city", city_path(@gossip.user.city) %> </p>
       </td>
       <td> <%= @gossip.title %> </td>
       <td> <%= @gossip.content %> </td>

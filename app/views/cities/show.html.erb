@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>VILLE</title>
+  <body> 
+  	<p> Bienvenue sur la page de la ville N° <%=params[:id]%> !</p> 
+  	<p>Voici les potins émanant de cette ville :</p>
+
+  	<table class="table">
+  <thead>
+    <tr>
+      <th scope="row">#</th>
+      <th scope="row">Name</th>
+      <th scope="row">Associated_Gossip</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @users.each do |user| %>
+    <% @gossips_specific = @gossips.where("user_id = ?", user.id) %>
+        <% @gossips_specific.each do |gossip| %>
+            <div class="card" style = "margin-bottom:25px" >
+            <div class="card-header" >
+            </div>
+            <div class="card-body">
+            <h5 class="card-title"><%= gossip.title %></h5>
+            <p class="card-text"><%= gossip.content %></p>
+            <a class="btn btn-primary" <%= link_to "Go to gossip page", gossip_path(gossip) %> </a>
+        <%end%>
+    <%end%>
+ </div>
+</div>
+
+
+
+</tbody>
+
+</table>
+
+
+</body>
+</html>
