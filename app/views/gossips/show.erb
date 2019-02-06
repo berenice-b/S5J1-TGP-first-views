@@ -22,7 +22,8 @@
       <th scope="col"> # </th>
       <td> 
       	<p> <%= @gossip.user.first_name %> <%= @gossip.user.last_name %> </p> 
-      	<p> <%= link_to "Read more about the author", '/author/'+@gossip.user.id.to_s %> </p> 
+        <p> <%= link_to "Read more about the author", '/author/'+@gossip.user.id.to_s %> </p> 
+        <p> <%= link_to "Edit the gossip", edit_gossip_path %> </p>
       </td>
       <td> <%= @gossip.title %> </td>
       <td> <%= @gossip.content %> </td>

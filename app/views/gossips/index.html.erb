@@ -22,7 +22,7 @@
 
       <!-- Page Heading -->
       <h1 class="my-4">Welcome, <%=params[:first_name]%> !</h1>
-      <p> <%= link_to "Submit a new Gossip", '/gossips/new' %> </p> 
+      <p> <%= link_to "Soumettre un nouveau gossip", new_gossip_path %> </p> 
         <h1> <small> Voici tous les potins :</small> </h1>
     
 
@@ -34,7 +34,7 @@
 		  <div class="card-body">
 		    <h5 class="card-title"><%= gossip.title %></h5>
 		    <p class="card-text"><%= gossip.content %></p>
-		    <a class="btn btn-primary" <%= link_to "Go to gossip page", '/gossips/'+gossip.id.to_s %> </a>
+		    <a class="btn btn-primary" <%= link_to "Go to gossip page", gossip_path(gossip) %> </a>
 		  </div>
 		</div>
 
