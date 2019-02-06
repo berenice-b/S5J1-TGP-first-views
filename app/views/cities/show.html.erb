@@ -6,13 +6,7 @@
   	<p>Voici les potins émanant de cette ville :</p>
 
   	<table class="table">
-  <thead>
-    <tr>
-      <th scope="row">#</th>
-      <th scope="row">Name</th>
-      <th scope="row">Associated_Gossip</th>
-    </tr>
-  </thead>
+  
 
   <tbody>
   <% @users.each do |user| %>
@@ -25,10 +19,12 @@
             <h5 class="card-title"><%= gossip.title %></h5>
             <p class="card-text"><%= gossip.content %></p>
             <a class="btn btn-primary" <%= link_to "Go to gossip page", gossip_path(gossip) %> </a>
+        
+</div>
+</div>
         <%end%>
     <%end%>
- </div>
-</div>
+ 
 
 
 
