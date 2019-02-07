@@ -4,13 +4,12 @@ resources :gossips
 resources :cities
 resources :users
 resources :comments
+resources :sessions, only:[:new, :create, :destroy]
 
 root 'gossips#index'
 
-get '/team', to: 'thegossipcontroller#team'
-get '/contact', to: 'thegossipcontroller#contact'
-
-#get 'author/:id', to: 'thegossipcontroller#author_page'
+get '/team', to: 'application#team'
+get '/contact', to: 'application#contact'
 
 
 
