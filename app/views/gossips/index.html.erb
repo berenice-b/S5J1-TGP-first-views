@@ -21,7 +21,12 @@
     <div class="container">
 
       <!-- Page Heading -->
-      <h1 class="my-4">Welcome, <%=params[:first_name]%> !</h1>
+
+    <% if current_user %>
+      <h1 class="my-4">Welcome <%=current_user.first_name%> !</h1>
+      <%else %> 
+      <h1 class="my-4">Welcome dans le monde de gossip !</h1>
+      <%end%>
       <p> <%= link_to "Soumettre un nouveau gossip", new_gossip_path %> </p> 
         <h1> <small> Voici tous les potins :</small> </h1>
     
@@ -48,15 +53,5 @@
       </div>
       <!-- /.container -->
     </footer>
-
-  </body>
-
-</html>
-
-
-
-
-
-
 </body>
 </html>

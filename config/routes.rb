@@ -7,6 +7,7 @@ resources :comments
 resources :sessions, only:[:new, :create, :destroy]
 
 root 'gossips#index'
+get '/profile', to: 'gossips#profile'
 
 get '/team', to: 'application#team'
 get '/contact', to: 'application#contact'

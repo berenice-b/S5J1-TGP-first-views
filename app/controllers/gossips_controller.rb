@@ -1,8 +1,12 @@
 class GossipsController < ApplicationController
-
+  before_action :authenticate_user, only: [:create, :destroy, :edit]
   def index
     @gossips = Gossip.all
   end
+
+  def profile
+  @gossips = Gossip.all
+end
 
   def show
     @gossip = Gossip.find(params[:id])
@@ -17,30 +21,31 @@ class GossipsController < ApplicationController
   end
 
   def create
-  	
-  	puts "$" * 60
-    puts "ceci est le contenu de params :"
-    puts params
-    puts "$" * 60
+  	@gossip = Gossip.new(title: params[:title], content: params[:content])
+  @gossip.user = current_user
+  if @gossip.save
+    flash[:success] = "Potin bien créé !"
+    redirect_to gossips_path
+  else
+    render :new
+  end
+  puts "&&" * 100
     
-    @gossip = Gossip.new(title: params[:title], content: params[:content], user_id: params[:user_id])
-    
+  #   @gossip = Gossip.new(title: params[:title], content: params[:content], user_id: params[:user_id])
 
-    puts "$" * 60
-    puts "ceci est mon objet Gossip :"
-    puts @gossip.title
-	puts @gossip.content
-	puts @gossip.user_id
-	puts @gossip.user.first_name
-	puts @gossip.user.last_name
-    puts "$" * 60
-
-
-    if @gossip.save
-      redirect_to @gossip
-    else
-      render :new
-    end
+  #   puts "$" * 60
+  #   puts "ceci est mon objet Gossip :"
+  #   puts @gossip.title
+	# puts @gossip.content
+	# puts @gossip.user_id
+	# puts @gossip.user.first_name
+	# puts @gossip.user.last_name
+  #   puts "$" * 60
+  #   if @gossip.save
+  #     redirect_to @gossip
+  #   else
+  #     render :new
+  #   end
   end
 
   def update
@@ -56,6 +61,15 @@ class GossipsController < ApplicationController
     @gossip = Gossip.find(params[:id])
     if @gossip.destroy
       redirect_to gossips_path
+    end
+  end
+
+   private
+
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Please log in."
+      redirect_to new_session_path
     end
   end
 
