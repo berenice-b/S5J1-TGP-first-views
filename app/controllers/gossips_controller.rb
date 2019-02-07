@@ -1,5 +1,6 @@
 class GossipsController < ApplicationController
-  before_action :authenticate_user, only: [:create, :destroy, :edit]
+  before_action :authenticate_user, only: [:create, :destroy, :edit, :show]
+  before_action :author_match, only: [:edit, :destroy]
   def index
     @gossips = Gossip.all
   end
@@ -73,4 +74,10 @@ end
     end
   end
 
+  def author_match
+    @gossip = Gossip.find(params[:id])
+    unless current_user.id == @gossip.user.id
+      	flash[:danger] = "You are not allowed."
+		end
+	end
 end

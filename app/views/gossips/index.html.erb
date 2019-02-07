@@ -23,23 +23,24 @@
       <!-- Page Heading -->
 
     <% if current_user %>
-      <h1 class="my-4">Welcome <%=current_user.first_name%> !</h1>
+     <center> <h1 class="my-4 center text-info">Welcome <%=current_user.first_name%> !</h1></center>
       <%else %> 
-      <h1 class="my-4">Welcome dans le monde de gossip !</h1>
+      <h1 class="my-4 tex-center text-primary">Welcome dans le monde de gossip !</h1>
       <%end%>
       <p> <%= link_to "Soumettre un nouveau gossip", new_gossip_path %> </p> 
-        <h1> <small> Voici tous les potins :</small> </h1>
+        <h1 class="tex-center text-primary">  Voici tous les potins </h1>
     
 
         <% @gossips.each do |gossip| %>
    	
-		      <div class="card" style = "margin-bottom:25px" >
-		  <div class="card-header" >
+		      <div class="card alert alert-primary shadow-lg p-4 mb-4" >
+		  <div class="card-header " >
+      <h5 class="card-title text-center"><%= gossip.title %></h5>
 		  </div>
 		  <div class="card-body">
-		    <h5 class="card-title"><%= gossip.title %></h5>
-		    <p class="card-text"><%= gossip.content %></p>
-		    <a class="btn btn-primary" <%= link_to "Go to gossip page", gossip_path(gossip) %> </a>
+		    
+		    <p class="card-text text-center"><%= gossip.content %></p>
+		    <center><a class="btn btn-primary " <%= link_to "Go to gossip page", gossip_path(gossip) %> </a></center>
 		  </div>
 		</div>
 
