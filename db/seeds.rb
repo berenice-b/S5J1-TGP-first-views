@@ -14,7 +14,7 @@ TagGossip.destroy_all
    end
 puts "10 villes ont été créées"
 10.times do
-    user = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, city: City.all.sample, description: Faker::MostInterestingManInTheWorld.quote, email: Faker::Internet.email , age: rand(18..80))
+    user = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, city: City.all.sample, description: Faker::MostInterestingManInTheWorld.quote, email: Faker::Internet.email , password: Faker::Internet.password, age: rand(18..80))
     end
 puts "10 users ont été créés"
 20.times do

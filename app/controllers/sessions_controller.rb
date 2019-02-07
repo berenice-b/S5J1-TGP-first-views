@@ -5,13 +5,15 @@ class SessionsController < ApplicationController
   end
   
   def create
-    user = User.find_by(email: momo@cotedagneau.com)
-    if user && user.authenticate(momo@cotedagneau.com)
-      session[:user_id] = user_id
+    user = User.find_by(email: params[:email])
+    if user && user.authenticate(params[:password])
+      #session[:user_id] = user_id
+      redirect_to root_path
 
     else 
-      flash.now[:danger] = 'tu es mal barré'
+      puts 'tu es mal barré'
       render 'new'
+      
     end
   end
 
