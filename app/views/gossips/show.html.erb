@@ -2,44 +2,47 @@
   <head>
     <title>Contact</title>
   <body> 
-  	<p> Welcome sur la page du gossip N° <%=params[:id]%> !</p> 
-  	<p>Voici les infos sur ce potin :</p>
+  <div class="container">
+      <div class="jumbotron text-center text-primary bg-light">
+      <h5> Welcome sur la page du gossip N° <%=params[:id]%> !</h5> 
+      <h6>Voici les infos sur ce potin :</h6>
+      </div>
 
-  	<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="row">#</th>
-      <th scope="row">Author</th>
-      <th scope="row">Title</th>
-      <th scope="row">Content</th>
-      <th scope="row">Creation date</th>
-    </tr>
-  </thead>
+        <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="row">#</th>
+                  <th scope="row">Author</th>
+                  <th scope="row">Title</th>
+                  <th scope="row">Content</th>
+                  <th scope="row">Creation date</th>
+                </tr>
+              </thead>
 
-  <tbody>
+                <tbody>
 
-    <tr>
-      <th scope="col"> # </th>
-      <td> 
-      	<p> <%= @gossip.user.first_name %> <%= @gossip.user.last_name %> </p> 
-        <p> <%= link_to "Read more about the author", user_path(@gossip.user_id) %> </p> 
-        <p> <%= link_to "Display author's city", city_path(@gossip.user.city) %> </p>
-        <p> <%= link_to "Add comment", new_comment_path(@comment) %> </p>
-           <%if @gossip.user_id == session[:user_id]%> 
-        <p> <%= link_to "Edit the gossip", edit_gossip_path %> </p>
-        <p> <%= link_to "Destroy the gossip", gossip_path(@gossip), method: :delete, data: { confirm: 'Etes-vous sûr.e de vouloir supprimer le gossip ?' } %> </p>
-            <%end%>    
-      </td>
-      <td> <%= @gossip.title %> </td>
-      <td> <%= @gossip.content %> </td>
-      <td> <%= @gossip.created_at %> </td>
-      
-    </tr>
- 
-  </tbody>
+                  <tr>
+                    <th scope="col"> # </th>
+                    <td> 
+                      <p> <%= @gossip.user.first_name %> <%= @gossip.user.last_name %> </p> 
+                      <button class="btn btn-success tex-white"> <%= link_to "Read more about the author", user_path(@gossip.user_id) %> </button> 
+                      <button class="btn btn-success tex-white"> <%= link_to "Display author's city", city_path(@gossip.user.city) %> </button>
+                      <button class="btn btn-success tex-white"> <%= link_to "Add comment", new_comment_path(@comment) %> </button>
+                        <%if @gossip.user_id == session[:user_id]%> 
+                      <button class="btn btn-success tex-white"> <%= link_to "Edit the gossip", edit_gossip_path %> </button>
+                      <button class="btn btn-success tex-white"> <%= link_to "Destroy the gossip", gossip_path(@gossip), method: :delete, data: { confirm: 'Etes-vous sûr.e de vouloir supprimer le gossip ?' } %> </button>
+                          <%end%>    
+                    </td>
+                    <td> <%= @gossip.title %> </td>
+                    <td> <%= @gossip.content %> </td>
+                    <td> <%= @gossip.created_at %> </td>
+                    
+                  </tr>
+              
+                </tbody>
 
-</table>
+        </table>
 
-
+</div>
 </body>
 </html>

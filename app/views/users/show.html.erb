@@ -2,11 +2,13 @@
   <head>
     <title>Auteur</title>
   <body> 
-  	<p> Bienvenue sur la page de l auteur <%= @user.first_name %> <%= @user.last_name%> !</p> 
-  	<p>Voici les infos sur cet auteur :</p>
+  <div class="jumbotron text-center text-primary bg-light">
+  	<h6> Bienvenue sur la page de : <%= @user.first_name %> <%= @user.last_name%> !</h6> 
+  	<h6>Voici les infos sur : <%= @user.first_name %> <%= @user.last_name%></h6>
+    </div>
 
   	<table class="table">
-  <thead>
+  <thead class="thead-dark">
     <tr>
       <th scope="row">#</th>
       <th scope="row">First Name</th>

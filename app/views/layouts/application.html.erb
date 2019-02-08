@@ -2,59 +2,69 @@
 <html>
   <head>
     <title>TheGossipProject</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
-<nav class="navbar navbar-expand-lg navbar-light alert alert-primary shadow-lg p-4 mb-4">
-  <a class="navbar-brand text-danger" href="/">The Gossip Project</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ">
-      <li class="nav-item active">
-        <a class="nav-link text-danger" href="/">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link text-danger" href="/team">Team</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-danger" href="/contact">Contact</a>
-      </li>
+</head>
+  <body class="bg-light">   
+      <nav class="navbar navbar-expand-lg navbar-light alert alert-primary shadow-lg p-4 mb-4">
+        <a class="navbar-brand text-danger" href="/">The Gossip Project<i class="fas fa-binoculars text-danger ml-3 mr-1"></i></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ">
+                  <li class="nav-item active">
+                    <a class="nav-link text-danger" href="/">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item ">
+                    <a class="nav-link text-danger" href="/team">Team</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-danger" href="/contact">Contact</a>
+                  </li>
+                  
+                  </ul>
+              </div>
+                  <div>
+                    <p class="nav-item">
+                      <% if current_user %>
+                        <button class="btn">
+                          <a class="nav-link text-center">  <%= link_to "Se déconnecter", session_path(session[:user_id]), method: :delete %> <i class="fas fa-sign-out-alt"></i>
+                          </a>
+                        </button>
+                      
+                          <% else %>
+                      
+                          <button class="btn">
+                              <a class="nav-link text-center"> <%= link_to "Se connecter", new_session_path %><i class="fas fa-user"></i>
+                              </a>
+                          </button>
+                        
+                              <button class="btn text-center">
+                                <a class="nav-link "> <%= link_to "S'inscrire", new_user_path %> <i class="fas fa-user"></i>
+                                </a>
+                            </button>
+                      <% end %>
+                  </div>
+      </nav>
+  
+    
+ <%= yield %>
+    <!-- Footer -->
+    <footer class="py-5 bg-dark navbar-fixed-bottom">
+      <div class="container">
       
-    </ul>
-  </div>
-  <div>
-  <p class="nav-item">
-  <% if current_user %>
-      <button class="btn">
-          <a class="nav-link text-center">  <%= link_to "Se déconnecter", session_path(session[:user_id]), method: :delete %>
-          </a>
-        </button>
-      
-      <% else %>
-      
-        <button class="btn">
-          <a class="nav-link text-center"> <%= link_to "Se connecter", new_session_path %>
-          </a>
-        </button>
-        
-        <button class="btn text-center">
-          <a class="nav-link "> <%= link_to "S'inscrire", new_user_path %>
-          </a>
-        </button>
-      <% end %>
+        <p class="m-0 text-center text-white">Copyright &copy; The Gossip Project 2018</p>
+        <br>
+        <h4 class="m-0 text-center text-primary">Made with ♥ by moussaillons</h4>
       </div>
-  </nav>
-
-  </head>
-
-  <body class="bg-light">
-    <%= yield %>
+      <!-- /.container -->
+    </footer>
+   
   </body>
 </html>
