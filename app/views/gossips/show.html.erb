@@ -23,16 +23,19 @@
       <td> 
       	<p> <%= @gossip.user.first_name %> <%= @gossip.user.last_name %> </p> 
         <p> <%= link_to "Read more about the author", user_path(@gossip.user_id) %> </p> 
-        <p> <%= link_to "Edit the gossip", edit_gossip_path %> </p>
-        <p> <%= link_to "Destroy the gossip", gossip_path(@gossip), method: :delete, data: { confirm: 'Etes-vous sûr.e de vouloir supprimer le gossip ?' } %> </p>
         <p> <%= link_to "Display author's city", city_path(@gossip.user.city) %> </p>
         <p> <%= link_to "Add comment", new_comment_path(@comment) %> </p>
+           <%if @gossip.user_id == session[:user_id]%> 
+        <p> <%= link_to "Edit the gossip", edit_gossip_path %> </p>
+        <p> <%= link_to "Destroy the gossip", gossip_path(@gossip), method: :delete, data: { confirm: 'Etes-vous sûr.e de vouloir supprimer le gossip ?' } %> </p>
+            <%end%>    
       </td>
       <td> <%= @gossip.title %> </td>
       <td> <%= @gossip.content %> </td>
       <td> <%= @gossip.created_at %> </td>
+      
     </tr>
-
+ 
   </tbody>
 
 </table>
